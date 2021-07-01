@@ -25,10 +25,4 @@ public class LifeBoat {
         }
         return answer;
     }
-
-    public static void main(String[] args) {
-        LifeBoat lifeBoat = new LifeBoat();
-//        System.out.println(lifeBoat.solution(new int[]{70, 50, 80, 50}, 100));
-        System.out.println(lifeBoat.solution(new int[]{70, 80, 50}, 100));
-    }
 }
