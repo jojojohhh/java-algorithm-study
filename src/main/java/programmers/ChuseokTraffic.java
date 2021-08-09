@@ -1,18 +1,20 @@
 package programmers;
 
+import java.sql.Time;
+
 public class ChuseokTraffic {
     public int solution(String[] lines) {
         int answer = 0;
-        int[][] t = new int[lines.length][2];
-        for (int i = 0; i < lines.length; i++) {    // 시간 계산 고쳐야함
+        long[][] t = new long[lines.length][2];
+        for (int i = 0; i < lines.length; i++) {
             String[] temp = lines[i].split("\\s");
-            t[i][1] = (int) (Double.parseDouble(temp[1].replaceAll(":", "")) * 1000);
-            t[i][0] = t[i][1] - (int) (Double.parseDouble(temp[2].substring(0, temp[2].length() - 1)) * 1000) + 1;
+            t[i][1] = Time.valueOf(temp[1].substring(0, 8)).getTime() + Long.parseLong(temp[1].substring(9));
+            t[i][0] = t[i][1] - (long) (Double.parseDouble(temp[2].substring(0, temp[2].length() - 1)) * 1000) + 1;
         }
 
         for (int i = 0; i < t.length; i++) {
-            int[] start = {t[i][0], t[i][0] + 999};
-            int[] end = {t[i][1], t[i][1] + 999};
+            long[] start = {t[i][0], t[i][0] + 999};
+            long[] end = {t[i][1], t[i][1] + 999};
             int startCnt = 0;
             int endCnt = 0;
             for (int j = 0; j < t.length; j++) {
