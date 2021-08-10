@@ -39,7 +39,7 @@ public class MutualEvaluation {
     }
 }
 
-class anotherSolution {
+class AnotherSolution {
     public String solution(int[][] scores) {
         StringBuilder builder = new StringBuilder();
         for(int i=0; i<scores.length; i++) {
