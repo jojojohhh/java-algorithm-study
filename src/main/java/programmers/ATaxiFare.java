@@ -3,7 +3,6 @@ package programmers;
 import java.util.Arrays;
 
 public class ATaxiFare {
-
     public int solution(int n, int s, int a, int b, int[][] fares) {
         int[][] map = new int[n + 1][n + 1];
 
@@ -15,7 +14,7 @@ public class ATaxiFare {
         for (int i = 0; i < fares.length; i++)
             map[fares[i][0]][fares[i][1]] = map[fares[i][1]][fares[i][0]] = fares[i][2];
 
-        for (int i = 1; i < map.length; i++) {
+        for (int i = 1; i < map.length; i++) { // 플로이드 와샬 알고리즘 정점간 최단경로 구할때, 간선이 많으면 속도 다익스트라 보다 빠름
             for (int j = 1; j < map.length; j++) {
                 if (i != j) {
                     for (int k = 1; k <map.length; k++) {
