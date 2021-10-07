@@ -4,12 +4,11 @@ import java.util.Arrays;
 
 public class MinimumRectangle {
     public int solution(int[][] sizes) {
-        int width = 0, height = 0;
-        for (int[] size: sizes) {
-            Arrays.sort(size);
-            width = Math.max(width, size[0]);
-            height = Math.max(height, size[1]);
-        }
-        return width * height;
+        return Arrays.stream(sizes)
+                .map(o -> Math.max(o[0], o[1]))
+                .max((o1, o2) -> o1 - o2).get() *
+                Arrays.stream(sizes)
+                .map(o -> Math.min(o[0], o[1]))
+                .max(((o1, o2) -> o1 - o2)).get();
     }
 }
